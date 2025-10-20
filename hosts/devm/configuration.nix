@@ -133,14 +133,6 @@
     curl
     alacritty
     
-    #i3 x11 stuff
-    arandr
-    copyq
-    xclip
-    ranger
-    rofi
-    i3lock
-
   ];
 
   fonts.packages = with pkgs; [

@@ -2,14 +2,22 @@
 
 {
   gtk = {
-    enable = true;
+    enable = true; 
+    
     theme = {
-      package = pkgs.graphite-gtk-theme;
-      name = "Graphite-Light-Rimless";
+      package = pkgs.graphite-gtk-theme.override {
+        colorVariants = [ "light" ];
+        themeVariants = [ "yellow" ];
+        tweaks = [ "rimless" ];
+      };
+      name = "Graphite-Default-Light"; 
     };
-    iconTheme = { # <<< This is the corrected placement
-      name = "Paper";
-      package = pkgs.paper-icon-theme;
+
+    iconTheme = {
+      package = pkgs.tela-circle-icon-theme.override {
+        colorVariants = [ "black" ];
+      };
+      name = "Tela-circle-black";
     };
   };
 
@@ -21,11 +29,13 @@
     gtk.enable = true;
   };
 
+
   home.stateVersion = "25.05";
   home.username = "v014";
   home.homeDirectory = "/home/v014";
   home.file.".config/i3".source = ../../config/i3;
   home.file.".config/i3status".source = ../../config/i3status;
+  home.file.".config/wallpaper".source = ../../config/wallpaper;
   home.packages = with pkgs; [
    
    ## cli utils
@@ -126,6 +136,7 @@
     xorg.xkill
     dunst
     arandr
+    feh
     xdg-desktop-portal-gtk
     networkmanagerapplet
     flameshot

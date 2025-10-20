@@ -29,10 +29,8 @@ font pango:JetBrainsMono Nerd Font Mono 8
 exec --no-startup-id dex --autostart --environment i3 &
 
 # set display resolution and refresh rate
-exec --no-startup-id /home/v014/.screenlayout/desktop.sh &
+exec --no-startup-id ~/.config/screenlayout/desktop.sh &
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork &
 
 # network jazz
@@ -45,15 +43,16 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork &
 # exec --no-startup-id picom &
 
 # wallpaper
-exec --no-startup-id nitrogen --restore &
+# exec --no-startup-id nitrogen --restore &
+ exec_always --no-startup-id feh --bg-scale /home/sohee/Downloads/sq6ljh2em3p81.jpg 
 
 # clipboard manager
-# exec --no-startup-id copyq &
-# bindsym $mod+c exec copyq show
-# for_window [instance="^copyq$" class="^copyq$"] border pixel 1, floating enable
+ exec --no-startup-id copyq &
+ bindsym $mod+c exec copyq show
+ for_window [instance="^copyq$" class="^copyq$"] border pixel 1, floating enable
 
 # language support
-# exec --no-startup-id ibus-daemon -drxR &
+ exec --no-startup-id ibus-daemon -drxR &
 
 # kdeconnect
  exec --no-startup-id kdeconnect-indicator &
