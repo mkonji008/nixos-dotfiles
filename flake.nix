@@ -7,11 +7,15 @@
           url =  "github:nix-community/home-manager/release-25.05";
           inputs.nixpkgs.follows = "nixpkgs";
       };
+
+      zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    outputs = { self, nixpkgs, home-manager, zen-browser, ... }@inputs:
       let
         system = "x86_64-linux";
+	overlays = [ (import ./overlays/default.nix) ];
       in
       { 
       
@@ -31,17 +35,20 @@
           }
         ];
       };
-	devm = nixpkgs.lib.nixosSystem { 
-          specialArgs = {inherit inputs;};
-	  modules = [
-            ./hosts/devm/configuration.nix
-            home-manager.nixosModules.home-manager
+      devm = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/devm/configuration.nix
+          home-manager.nixosModules.home-manager
           {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.v014 = import ./hosts/devm/home.nix;
-            backupFileExtension = "backup";
+            nixpkgs.overlays = overlays;
+            
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs; system = "x86_64-linux";};
+              users.v014 = import ./hosts/devm/home.nix;
+              backupFileExtension = "backup";
             };
           }
         ];
