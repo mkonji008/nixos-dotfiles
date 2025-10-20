@@ -18,7 +18,7 @@
       name = "Tela-circle-black";
     };
   };
- 
+  
   home.pointerCursor = {
     package = pkgs.paper-icon-theme;
     name = "Paper";
@@ -215,8 +215,6 @@
     udisks
     udisks2
     gvfs
-    gvfs-smb
-    gvfs-wsdd
    
    ## keyboard utils
     qmk
