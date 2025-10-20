@@ -28,6 +28,18 @@
     ];  
   };
 
+  services.samba = {
+    package = pkgs.samba4Full;
+    usershares.enable = true;
+    enable = true;
+    openFirewall = true;
+    };
+
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
+  };
+
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
   

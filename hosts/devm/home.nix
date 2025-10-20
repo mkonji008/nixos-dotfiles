@@ -2,17 +2,15 @@
 
 {
   gtk = {
-    enable = true; 
-    
+    enable = true;
     theme = {
-      package = pkgs.graphite-gtk-theme.override {
+      package = pkgs.jasper-gtk-theme.override {
+        themeVariants = [ "grey" ];
         colorVariants = [ "light" ];
-        themeVariants = [ "yellow" ];
-        tweaks = [ "rimless" ];
+        sizeVariants = [ "compact" ];
       };
-      name = "Graphite-Default-Light"; 
+      name = "Jasper-grey-light-compact";
     };
-
     iconTheme = {
       package = pkgs.tela-circle-icon-theme.override {
         colorVariants = [ "black" ];
@@ -20,7 +18,7 @@
       name = "Tela-circle-black";
     };
   };
-
+ 
   home.pointerCursor = {
     package = pkgs.paper-icon-theme;
     name = "Paper";
@@ -28,7 +26,6 @@
     x11.enable = true;
     gtk.enable = true;
   };
-
 
   home.stateVersion = "25.05";
   home.username = "v014";
@@ -136,7 +133,7 @@
     xorg.xkill
     dunst
     arandr
-    feh
+    nitrogen
     xdg-desktop-portal-gtk
     networkmanagerapplet
     flameshot
@@ -152,7 +149,7 @@
     pulseaudioFull
    
    ## files and file accessories
-    nemo-with-extensions
+    pcmanfm
     filezilla
     p7zip
     bzip3
@@ -216,6 +213,10 @@
     smbnetfs
     udiskie
     udisks
+    udisks2
+    gvfs
+    gvfs-smb
+    gvfs-wsdd
    
    ## keyboard utils
     qmk
