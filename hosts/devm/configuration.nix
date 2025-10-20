@@ -31,7 +31,10 @@
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
   
-  i18n.inputMethod.enabled = "fcitx5";
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+  };
   i18n.inputMethod.fcitx5.addons = [
         pkgs.fcitx5-mozc
         pkgs.fcitx5-gtk

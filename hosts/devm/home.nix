@@ -4,10 +4,10 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Graphite-Light-Rimless";
       package = pkgs.graphite-gtk-theme;
+      name = "Graphite-Light-Rimless";
     };
-    iconTheme = {
+    iconTheme = { # <<< This is the corrected placement
       name = "Paper";
       package = pkgs.paper-icon-theme;
     };
@@ -16,6 +16,7 @@
   home.pointerCursor = {
     package = pkgs.paper-icon-theme;
     name = "Paper";
+    size = 16;
     x11.enable = true;
     gtk.enable = true;
   };
